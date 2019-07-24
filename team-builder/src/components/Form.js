@@ -1,35 +1,35 @@
 import React from 'react';
 
-function Form () {
+function Form (teamMember, handleChange, handleSubmit) {
     return (        
-        <form onSubmit={event => handleSubmit(event)}>
+        <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend>New Team Member</legend>
                 <label>
-                    Name: 
+                {' '}Name:{' '}
                     <input 
                         type='text'
                         name='name'
                         value={teamMember.name}
-                        onChange={event => handleChange(event)}
+                        onChange={handleChange}
                     />
                 </label>
                 <label>
-                    Email:
+                {' '}Email:{' '}
                     <input
                         type='text'
                         name='email'
                         value={teamMember.email} 
-                        onChange={event => handleChange(event)}
+                        onChange={handleChange}
                     />
                 </label>
                 <label>
-                    Role:
+                {' '}Role:{' '}
                     <input
                         type='text'
                         name='role'
                         value={teamMember.role} 
-                        onChange={event => handleChange(event)}
+                        onChange={handleChange}
                     />
                 </label>
                 <button type='submit'>
@@ -40,3 +40,5 @@ function Form () {
     
     );
 }
+
+export default Form;
