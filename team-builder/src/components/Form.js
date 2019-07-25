@@ -1,34 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Form (teamMember, handleChange, handleSubmit) {
+function Form (props) {
+    const [input, setInput] = useState({name: '', email: '', role: ''})
+
+    function handleChange(event) {
+      setInput({ ...input, [event.target.name]: event.target.value });
+      // console.log(
+      //   'handleChange',
+      //   event.target.name, 
+      //   event.target.value,
+      // );
+    }
+  
+    function handleSubmit(event) {
+      event.preventDefault();
+      props.addMember();
+    }
+
     return (        
         <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend>New Team Member</legend>
-                <label>
-                {' '}Name:{' '}
+                <label htmlFor='name'>
+                Name:
                     <input 
                         type='text'
                         name='name'
-                        value={teamMember.name}
+                        value={input.name}                    
                         onChange={handleChange}
                     />
                 </label>
-                <label>
-                {' '}Email:{' '}
+                <label htmlFor='email'>
+                Email:
                     <input
                         type='text'
                         name='email'
-                        value={teamMember.email} 
-                        onChange={handleChange}
+                        value={input.email} 
+                        onChange={ handleChange}
                     />
                 </label>
-                <label>
-                {' '}Role:{' '}
+                <label htmlFor='role'>
+                Role:
                     <input
                         type='text'
                         name='role'
-                        value={teamMember.role} 
+                        value={input.role} 
                         onChange={handleChange}
                     />
                 </label>
